@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Frontend Intern - Nguyen Thanh Duc</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --dark: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --bg: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 100%);
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      padding: 24px 0;
+    }
+
+    .cv-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+      color: white;
+      padding: 32px 36px 26px;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 180px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .name {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .role {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #bfdbfe;
+      margin-top: 8px;
+    }
+
+    .hero-summary {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 95%;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      font-weight: 500;
+      margin: 6px 8px 0 0;
+    }
+
+    .content {
+      padding: 26px 28px 24px;
+    }
+
+    /* New two-column layout: left sidebar + main */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .content-grid>* {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar {
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 16px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+
+    .card-soft {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      height: auto;
+      margin-bottom: 14px;
+    }
+
+    .skill-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .skill-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .skill-level {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+    }
+
+    .progress-bar {
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: #f8fbff;
+      border: 1px solid #bfd3ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 8px 8px 0;
+    }
+
+    .language-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      display: inline-block;
+    }
+
+    .dot.active {
+      background: #2563eb;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #2563eb, #60a5fa);
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .project-tech {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+
+    .project-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .edu-box,
+    .goal-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .edu-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .edu-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .small-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .small-list li {
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .cv-wrapper {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      a {
+        text-decoration: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cv-wrapper">
+    <section class="hero">
+      <div class="row g-4 align-items-center">
+        <div class="col-auto">
+          <img src="./images/CV.png" alt="Nguyễn Thanh Đức" class="avatar" style="object-fit: cover;" />
+        </div>
+        <div class="col">
+          <h1 class="name">Nguyễn Thanh Đức</h1>
+          <div class="role">Frontend Intern / Frontend Developer</div>
+
+          <div class="mt-2 mb-3">
+            <span class="contact-chip"><i class="ri-map-pin-line" style="font-size: 15px;"></i> TP.HCM</span>
+            <span class="contact-chip"><i class="ri-phone-line" style="font-size: 15px;"></i> 0326939366</span>
+            <span class="contact-chip"><i class="ri-mail-line" style="font-size: 15px;"></i>
+              nguyenthanhduc70pleiku@gmail.com</span>
+            <span class="contact-chip"><i class="ri-github-line" style="font-size: 15px;"></i>
+              github.com/ThanhDuck204</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="content-grid">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+          <div class="section-title">Kỹ năng chuyên môn</div>
+
+          <div class="skill-box">
+            <div class="skill-head">
+              <div class="skill-name">HTML5</div>
+              <div class="skill-level">Advanced</div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-head">
+              <div class="skill-name">Tailwind CSS</div>
+              <div class="skill-level">Advanced</div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-head">
+              <div class="skill-name">SCSS / CSS3</div>
+              <div class="skill-level">Advanced</div>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="skill-head">
+              <div class="skill-name">React.js</div>
+              <div class="skill-level">Intermediate</div>
+            </div>
+          </div>
+
+          <div class="section-title">Ngôn ngữ & Database</div>
+          <div class="card-soft">
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="tag">C#</span>
+            <div style="height:8px"></div>
+            <span class="tag">MySQL</span>
+            <span class="tag">MongoDB</span>
+          </div>
+
+          <div class="section-title">Web & Công cụ</div>
+          <div class="card-soft">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3 / SCSS</span>
+            <span class="tag">REST API</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Figma</span>
+          </div>
+
+          <div class="section-title">AI Tools</div>
+          <div class="card-soft">
+            <span class="tag">Claude</span>
+            <span class="tag">Antigravity</span>
+            <span class="tag">Kiro</span>
+            <span class="tag">Cursor</span>
+            <span class="tag">ChatGPT</span>
+          </div>
+
+          <div class="section-title">Ngoại ngữ</div>
+          <div class="card-soft">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:14px; font-weight:700; color:#0f172a;">Tiếng Anh</span>
+              <span style="font-size:12px; font-weight:700; color:#64748b;">B1</span>
+            </div>
+            <div class="language-dots">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div class="section-title">Chứng chỉ</div>
+          <div class="card-soft">
+            <span class="tag">Tiếng Anh B1</span>
+            <span class="tag">Giao tiếp và làm việc nhóm</span>
+          </div>
+
+          <div class="section-title">Điểm mạnh (khiêm tốn)</div>
+          <div class="card-soft">
+            <span class="tag">Sẵn sàng học hỏi</span>
+            <span class="tag">Hòa đồng, dễ hòa nhập</span>
+            <span class="tag">Làm việc có trách nhiệm</span>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main>
+          <div class="section-title">Giới thiệu</div>
+          <div class="goal-box mb-4">
+            <div style="font-size:13.5px; color:#475569; line-height:1.65;">
+              Là sinh viên chuyên ngành Công nghệ Phần mềm tại HUTECH, định hướng phát triển trở thành Frontend
+              Developer. Sở hữu nền tảng vững chắc về HTML/CSS/JS và đang trau dồi chuyên sâu React.js, Tailwind CSS.
+              Thông qua các dự án cá nhân trên GitHub và trải nghiệm thực tiễn với Unity/C#, tư duy logic, kiến thức OOP
+              và kỹ năng giải quyết vấn đề đã được rèn luyện. Luôn hướng tới việc xây dựng giao diện hiện đại,
+              tối ưu UX/UI và chủ động vận dụng AI tools (Cursor, ChatGPT, Claude...) để gia tăng hiệu suất làm việc.
+            </div>
+          </div>
+
+          <div class="section-title">Học vấn</div>
+          <div class="edu-box mb-4">
+            <div class="edu-title">Đại học Công nghệ TP.HCM (HUTECH)</div>
+            <div class="edu-sub">Chuyên ngành: Công nghệ Phần mềm | Định hướng thực tập Frontend Developer</div>
+            <div style="font-size:13px; color:#475569; line-height:1.65;">Đã học và thực hành các môn liên quan đến phát
+              triển phần mềm, lập trình web, cơ sở dữ liệu, cấu trúc dữ liệu & giải thuật, phân tích hệ thống và triển
+              khai dự án học tập.</div>
+          </div>
+
+          <div class="section-title">Dự án nổi bật</div>
+
+          <div class="project-card">
+            <div class="project-title">Web Bán Hàng</div>
+            <div class="project-tech">HTML5 • CSS3 • JavaScript • UI/UX cơ bản</div>
+            <div class="project-desc">Website bán hàng với giỏ hàng, checkout, tập trung UI/UX và responsive layout.
+            </div>
+            <a class="project-link"
+              href="https://github.com/ThanhDuck204/Web-Ban-Hang-">github.com/ThanhDuck204/Web-Ban-Hang-</a>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">App Truyện Tranh Mobile</div>
+            <div class="project-tech">UI/UX • Cấu trúc nội dung • Frontend tư duy sản phẩm</div>
+            <div class="project-desc">App đọc truyện tranh tối ưu UX, hiển thị rõ ràng, dễ sử dụng.</div>
+            <a class="project-link"
+              href="https://github.com/ThanhDuck204/AppTruyenTranhMobile">github.com/ThanhDuck204/AppTruyenTranhMobile</a>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">Unity Projects</div>
+            <div class="project-tech">Unity • C# • Logic • Debug</div>
+            <div class="project-desc">Các dự án game được giữ trong portfolio như nền tảng bổ trợ giúp rèn luyện tư duy
+              logic, tổ chức code, xử lý state và kỹ năng debug. Đây là kiến thức hỗ trợ, không phải định hướng chính so
+              với Frontend.</div>
+            <a class="project-link"
+              href="https://github.com/ThanhDuck204/DemoGame_DACN_VampireSV">github.com/ThanhDuck204/DemoGame_DACN_VampireSV</a><br>
+            <a class="project-link"
+              href="https://github.com/ThanhDuck204/DemoGame_DSCS_2D-top-down-survival">github.com/ThanhDuck204/DemoGame_DSCS_2D-top-down-survival</a>
+          </div>
+
+          <div class="section-title">Mục tiêu nghề nghiệp</div>
+          <div class="goal-box mb-4">
+            <ul class="small-list">
+              <li><strong>Ngắn hạn:</strong> Hoàn thành tốt kỳ thực tập Frontend, nâng cao kỹ năng xây dựng giao diện,
+                responsive layout, quản lý component và làm việc với API cơ bản.</li>
+              <li><strong>Dài hạn:</strong> Trở thành Frontend Developer có khả năng phát triển giao diện hiện đại, tối
+                ưu UX/UI và tham gia phát triển sản phẩm thực tế trong team.</li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
